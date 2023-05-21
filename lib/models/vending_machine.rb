@@ -18,7 +18,7 @@ module Models
     end
 
     def find_product_by_id(id)
-      product = @products.detect { |item| item.id == id }
+      product = @products.detect { |item| item.id == id.to_i }
       raise "No product found with id: #{id}" unless product
 
       product

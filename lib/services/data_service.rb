@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../data/products'
+require_relative '../data/coins'
 require_relative '../models/product'
 require_relative '../models/coin'
 

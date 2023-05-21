@@ -3,9 +3,7 @@
 require_relative 'lib/services/cli_service'
 
 cli = Services::CLIService.new
-
 cli.print_welcome
-cli.init_vending_machine
 
 loop do
   case cli.select_vm_action

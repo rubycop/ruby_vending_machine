@@ -2,7 +2,6 @@
 
 require 'terminal-table'
 require 'rainbow'
-require 'readline'
 require_relative '../utils/format_string'
 
 module Services
@@ -22,8 +21,9 @@ module Services
       warn(message.colorize(:red))
     end
 
-    def self.readline(message)
-      Readline.readline(message, false)
+    def self.readline(message = '> ')
+      $stdout.print(message) if message
+      $stdin.gets.chomp
     end
   end
 end

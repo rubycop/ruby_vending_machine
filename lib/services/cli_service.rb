@@ -12,7 +12,7 @@ module Services
   class CLIService
     attr_accessor :vending_machine_service, :selected_product, :inserted_amount
 
-    def init_vending_machine
+    def initialize
       vm = Models::VendingMachine.new(
         products: DataService.bootstraped_sample_products,
         coins: DataService.bootstraped_sample_coins
@@ -24,7 +24,7 @@ module Services
       input = IOService.readline('Select a product (id): ')
       begin
         @selected_product = @vending_machine_service.vending_machine
-                                                    .find_product_by_id(input.to_i)
+                                                    .find_product_by_id(input)
       rescue RuntimeError => e
         IOService.print_error(e.message)
         Process.exit! && return
@@ -81,7 +81,7 @@ module Services
              "2. Buy product\n"\
              "Exit by default\n"
       IOService.print_message(text)
-      IOService.readline('> ')
+      IOService.readline
     end
 
     def print_change
@@ -89,9 +89,7 @@ module Services
       IOService.print_message('Change info'.colorize(:cyan))
       IOService.print_table(
         headings: ['Change amount', 'Coins value'],
-        rows: [
-          [change_coins.sum, change_coins.join(', ')]
-        ]
+        rows: [[change_coins.sum, change_coins.join(', ')]]
       )
     end
 
@@ -115,7 +113,7 @@ module Services
     end
 
     def print_coins
-      IOService.print_message('List of available coins'.colorize(:cyan))
+      IOService.print_message('List of available coins for change'.colorize(:cyan))
       IOService.print_table(
         headings: %w[value count],
         rows: @vending_machine_service.vending_machine.coins.map do |coin|
