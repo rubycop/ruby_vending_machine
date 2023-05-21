@@ -22,7 +22,7 @@ module Services
     def process_change(change)
       return if change.zero?
 
-      sorted_coins.each do |coin|
+      sorted_coins_by_value.each do |coin|
         next if change < coin.value || coin.count.zero?
 
         coin.remove_coin
@@ -38,7 +38,7 @@ module Services
 
     private
 
-    def sorted_coins
+    def sorted_coins_by_value
       @vending_machine.coins.sort { |a, b| b.value <=> a.value }
     end
   end
