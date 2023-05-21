@@ -7,23 +7,23 @@
 
 1. Clone this repo
 2. Install gems
-```ruby
+```
 bundle install
 ```
 3. Run
-```bash
+```
 ruby main.rb
 ```
 and follow instructions!
 
 3. Run tests
-```bash
+```
 rspec spec
 ```
 
 ## Example of usage
 
-```bash
+```
 ➜  vending_machine ruby main.rb
 
 ########################################
@@ -41,7 +41,7 @@ Exit by default
 
 Type `1` to see vm information
 
-```bash
+```
 > 1
 
 List of available products
@@ -75,7 +75,7 @@ VM balance
 
 Type `2` to buy some product
 
-```bash
+```
 > 2
 Select a product (id): 2
 
